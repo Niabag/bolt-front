@@ -1,8 +1,8 @@
 .prospects-page {
-  padding: 2rem;
+  padding: 0;
   max-width: 1400px;
   margin: 0 auto;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   min-height: 100vh;
 }
 
@@ -15,7 +15,8 @@
   background: white;
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,7 +27,7 @@
 .page-title {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
@@ -41,25 +42,34 @@
 .stat-item {
   text-align: center;
   padding: 1rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-radius: 12px;
   min-width: 70px;
+  transition: all 0.3s ease;
+  border: 1px solid #f1f5f9;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-color: #e2e8f0;
 }
 
 .stat-number {
   display: block;
   font-size: 1.6rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #0f172a;
 }
 
 .stat-label {
   display: block;
   font-size: 0.75rem;
-  color: #718096;
+  color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-top: 0.25rem;
+  font-weight: 500;
 }
 
 /* Section filtres */
@@ -68,7 +78,8 @@
   border-radius: 16px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
 }
 
 .search-bar {
@@ -87,7 +98,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.2rem;
-  color: #718096;
+  color: #64748b;
 }
 
 .search-input {
@@ -97,14 +108,15 @@
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: #f8f9fa;
+  background: #f8fafc;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #3b82f6;
   background: white;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
 }
 
 .clear-search {
@@ -122,7 +134,7 @@
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  color: #4a5568;
+  color: #475569;
   transition: all 0.2s ease;
 }
 
@@ -147,8 +159,9 @@
 
 .filter-group label {
   font-weight: 500;
-  color: #4a5568;
+  color: #475569;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .filter-select {
@@ -158,12 +171,13 @@
   background: white;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: border-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .bulk-actions {
@@ -172,7 +186,7 @@
 }
 
 .bulk-delete-btn {
-  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -180,12 +194,12 @@
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .bulk-delete-btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 .bulk-delete-btn:disabled {
@@ -197,20 +211,17 @@
 .pagination-info {
   text-align: center;
   padding: 1rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-radius: 8px;
-  border-left: 4px solid #667eea;
-}
-
-.pagination-info span {
+  border-left: 4px solid #3b82f6;
   font-size: 0.9rem;
-  color: #4a5568;
+  color: #475569;
   font-weight: 500;
 }
 
 /* Sélection en masse */
 .bulk-select-bar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   color: white;
   padding: 1rem;
   border-radius: 12px;
@@ -229,12 +240,13 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
+  accent-color: white;
 }
 
 /* ✅ NOUVEAU DESIGN: Grille des prospects plus compacte */
 .prospects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -243,10 +255,10 @@
   background: white;
   border-radius: 16px;
   padding: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
-  border: 1px solid #f1f3f4;
+  border: 1px solid #f1f5f9;
   overflow: hidden;
   min-height: 320px;
   display: flex;
@@ -255,17 +267,17 @@
 
 .prospect-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 .prospect-card.selected {
-  border-color: #667eea;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+  border-color: #3b82f6;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
 }
 
 /* ✅ NOUVEAU: Section supérieure plus compacte */
 .card-top-section {
-  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   padding: 1.5rem;
   position: relative;
   display: flex;
@@ -286,7 +298,7 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
-  accent-color: #667eea;
+  accent-color: #3b82f6;
   border-radius: 4px;
 }
 
@@ -294,7 +306,7 @@
 .prospect-avatar {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -302,7 +314,7 @@
   font-weight: 700;
   font-size: 1.5rem;
   color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
   margin-bottom: 0.75rem;
   border: 3px solid white;
 }
@@ -345,7 +357,7 @@
 .prospect-name {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #0f172a;
   margin: 0 0 0.75rem 0;
   text-align: center;
   line-height: 1.3;
@@ -370,12 +382,12 @@
   font-size: 1rem;
   width: 20px;
   text-align: center;
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .contact-text {
   font-size: 0.85rem;
-  color: #4a5568;
+  color: #475569;
   word-break: break-all;
   line-height: 1.3;
 }
@@ -386,19 +398,19 @@
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   padding: 0.5rem 0.75rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-radius: 8px;
-  border-left: 3px solid #667eea;
+  border-left: 3px solid #3b82f6;
 }
 
 .company-icon {
   font-size: 1rem;
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .company-name {
   font-size: 0.85rem;
-  color: #2d3748;
+  color: #0f172a;
   font-weight: 600;
 }
 
@@ -407,21 +419,21 @@
   align-items: flex-start;
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
-  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
   border-radius: 8px;
-  border-left: 3px solid #ed8936;
+  border-left: 3px solid #f59e0b;
   margin-bottom: 0.75rem;
 }
 
 .notes-icon {
   font-size: 0.9rem;
   margin-top: 0.1rem;
-  color: #ed8936;
+  color: #f59e0b;
 }
 
 .notes-text {
   font-size: 0.8rem;
-  color: #4a5568;
+  color: #475569;
   font-style: italic;
   line-height: 1.3;
   display: -webkit-box;
@@ -490,17 +502,17 @@
 }
 
 .primary-action {
-  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
 }
 
 .edit-action {
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
 }
 
 .delete-action {
-  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: white;
 }
 
@@ -520,13 +532,13 @@
 .card-footer {
   text-align: center;
   padding: 0.75rem 1.5rem 1rem;
-  border-top: 1px solid #f1f3f4;
-  background: linear-gradient(135deg, #fafbfc 0%, #f8f9fa 100%);
+  border-top: 1px solid #f1f5f9;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
 }
 
 .join-date {
   font-size: 0.75rem;
-  color: #718096;
+  color: #64748b;
   font-style: italic;
   font-weight: 500;
 }
@@ -536,8 +548,9 @@
   background: white;
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   margin-top: 2rem;
+  border: 1px solid #f1f5f9;
 }
 
 .pagination-wrapper {
@@ -553,7 +566,7 @@
   padding: 0.75rem 1.5rem;
   border: 2px solid #e2e8f0;
   background: white;
-  color: #4a5568;
+  color: #475569;
   border-radius: 10px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -565,18 +578,18 @@
 }
 
 .pagination-btn:hover:not(:disabled) {
-  border-color: #667eea;
-  background: #667eea;
+  border-color: #3b82f6;
+  background: #3b82f6;
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .pagination-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background: #f8f9fa;
-  color: #a0aec0;
+  background: #f8fafc;
+  color: #94a3b8;
 }
 
 .pagination-numbers {
@@ -591,7 +604,7 @@
   height: 40px;
   border: 2px solid #e2e8f0;
   background: white;
-  color: #4a5568;
+  color: #475569;
   border-radius: 10px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -603,24 +616,24 @@
 }
 
 .pagination-number:hover {
-  border-color: #667eea;
-  background: #667eea;
+  border-color: #3b82f6;
+  background: #3b82f6;
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .pagination-number.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-color: #667eea;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  border-color: #3b82f6;
   color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
   transform: translateY(-2px);
 }
 
 .pagination-ellipsis {
   padding: 0 0.5rem;
-  color: #a0aec0;
+  color: #94a3b8;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -632,11 +645,8 @@
   text-align: center;
   padding-top: 1rem;
   border-top: 1px solid #e2e8f0;
-}
-
-.pagination-details span {
   font-size: 0.9rem;
-  color: #718096;
+  color: #64748b;
   font-weight: 500;
 }
 
@@ -666,9 +676,10 @@
   padding: 4rem 2rem;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   max-width: 500px;
   margin: 0 auto;
+  border: 1px solid #f1f5f9;
 }
 
 .empty-icon {
@@ -678,20 +689,20 @@
 }
 
 .empty-state h3 {
-  color: #2d3748;
+  color: #0f172a;
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
 }
 
 .empty-state p {
-  color: #718096;
+  color: #64748b;
   margin: 0 0 2rem 0;
   font-size: 1rem;
   line-height: 1.5;
 }
 
 .cta-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -704,13 +715,13 @@
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
 }
 
 /* Responsive */
 @media (max-width: 1200px) {
   .prospects-page {
-    padding: 1.5rem;
+    padding: 0;
   }
   
   .prospects-grid {
@@ -721,7 +732,7 @@
 
 @media (max-width: 768px) {
   .prospects-page {
-    padding: 1rem;
+    padding: 0;
   }
   
   .header-content {

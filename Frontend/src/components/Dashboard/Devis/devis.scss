@@ -1,9 +1,9 @@
-/* Design moderne pour la section devis - Aperçu uniquement */
+/* Design moderne pour la section devis */
 
 .devis-page {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   min-height: 100vh;
-  padding: 2rem;
+  padding: 0;
 }
 
 /* Liste des devis */
@@ -13,7 +13,8 @@
   background: white;
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
 }
 
 .devis-list-header {
@@ -24,7 +25,7 @@
 .devis-list-title {
   font-size: 2rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
@@ -33,7 +34,7 @@
 /* ✅ NOUVEAU DESIGN: Grille des devis plus compacte */
 .devis-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
@@ -41,10 +42,10 @@
   background: white;
   border-radius: 16px;
   padding: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
-  border: 1px solid #f1f3f4;
+  border: 1px solid #f1f5f9;
   overflow: hidden;
   min-height: 300px;
   display: flex;
@@ -58,12 +59,12 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
 }
 
 .devis-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 .devis-card:hover::after {
@@ -86,7 +87,7 @@
 
 /* ✅ NOUVEAU: Section supérieure plus compacte */
 .devis-card-top {
-  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   padding: 1.5rem;
   position: relative;
   display: flex;
@@ -100,7 +101,7 @@
 .devis-avatar {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -108,7 +109,7 @@
   font-weight: 700;
   font-size: 1.25rem;
   color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
   margin-bottom: 0.75rem;
   border: 3px solid white;
 }
@@ -129,7 +130,7 @@
 .devis-card-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #0f172a;
   margin: 0 0 0.5rem 0;
   line-height: 1.3;
 }
@@ -139,10 +140,10 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
-  color: #718096;
+  color: #64748b;
   margin-bottom: 0.75rem;
   padding: 0.5rem 0.75rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   border-radius: 8px;
 }
 
@@ -155,7 +156,7 @@
 
 .devis-card-amount {
   font-weight: 700;
-  color: #48bb78;
+  color: #10b981;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -169,19 +170,19 @@
   gap: 0.5rem;
   margin-bottom: 1rem;
   padding: 0.5rem 0.75rem;
-  background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   border-radius: 8px;
-  border-left: 3px solid #38b2ac;
+  border-left: 3px solid #0ea5e9;
 }
 
 .devis-client-icon {
   font-size: 1rem;
-  color: #38b2ac;
+  color: #0ea5e9;
 }
 
 .devis-client-name {
   font-size: 0.85rem;
-  color: #2d3748;
+  color: #0f172a;
   font-weight: 600;
 }
 
@@ -243,7 +244,7 @@
 }
 
 .card-btn-edit {
-  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
   flex: 1;
   max-width: 80px;
@@ -251,12 +252,12 @@
 
 .card-btn-edit:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 /* ✅ NOUVEAU: Style pour le bouton PDF plus compact */
 .card-btn-pdf {
-  background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   color: white;
   flex: 1;
   max-width: 80px;
@@ -264,11 +265,11 @@
 
 .card-btn-pdf:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 4px 15px rgba(237, 137, 54, 0.3);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
 }
 
 .card-btn-delete {
-  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: white;
   width: 36px;
   padding: 0;
@@ -276,7 +277,7 @@
 
 .card-btn-delete:hover {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
 }
 
 /* ✅ NOUVEAUX STYLES POUR LE GROUPEMENT PAR CLIENT */
@@ -290,8 +291,8 @@
   background: white;
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
 }
 
 .client-group-header {
@@ -300,13 +301,13 @@
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #f1f3f4;
+  border-bottom: 2px solid #f1f5f9;
 }
 
 .client-avatar {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -314,24 +315,24 @@
   font-weight: bold;
   font-size: 1.25rem;
   color: white;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .client-group-info h3 {
   margin: 0 0 0.25rem 0;
-  color: #2d3748;
+  color: #0f172a;
   font-size: 1.25rem;
   font-weight: 600;
 }
 
 .client-group-info p {
   margin: 0.125rem 0;
-  color: #718096;
+  color: #64748b;
   font-size: 0.85rem;
 }
 
 .devis-count {
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white !important;
   padding: 0.125rem 0.5rem;
   border-radius: 12px;
@@ -348,33 +349,32 @@
   background: white;
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
 }
 
 .preview-header {
   text-align: center;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #f1f3f4;
+  border-bottom: 2px solid #f1f5f9;
 }
 
 .preview-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2d3748;
+  color: #0f172a;
   margin: 0 0 0.5rem 0;
 }
 
 .preview-subtitle {
   font-size: 1.2rem;
-  color: #718096;
+  color: #64748b;
   font-weight: 500;
 }
 
 .total-amount {
-  color: #48bb78;
+  color: #10b981;
   font-weight: 700;
   font-size: 1.4rem;
 }
@@ -388,7 +388,7 @@
 }
 
 .btn-save {
-  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -404,18 +404,18 @@
 
 .btn-save:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(72, 187, 120, 0.3);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
 }
 
 .btn-save:disabled {
-  background: #6c757d;
+  background: #64748b;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
 .btn-new {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -431,11 +431,11 @@
 
 .btn-new:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
 }
 
 .btn-secondary {
-  background: #6c757d;
+  background: #64748b;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -449,12 +449,12 @@
 }
 
 .btn-secondary:hover {
-  background: #5a6268;
+  background: #475569;
   transform: translateY(-2px);
 }
 
 .cta-button {
-  background: linear-gradient(135deg, #007bff, #0056b3);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -467,14 +467,14 @@
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
 }
 
 /* États vides */
 .empty-state {
   text-align: center;
   padding: 3rem;
-  color: #718096;
+  color: #64748b;
 }
 
 .empty-icon {
@@ -495,12 +495,12 @@
   justify-content: center;
   padding: 3rem;
   font-size: 1.2rem;
-  color: #718096;
+  color: #64748b;
 }
 
 .error-state {
-  background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
-  color: #c53030;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #b91c1c;
   padding: 1rem;
   border-radius: 12px;
   margin: 1rem 0;
@@ -511,7 +511,7 @@
 /* Responsive design */
 @media (max-width: 1200px) {
   .devis-page {
-    padding: 1rem;
+    padding: 0;
   }
   
   .devis-grid {
@@ -522,7 +522,7 @@
 
 @media (max-width: 768px) {
   .devis-page {
-    padding: 1rem;
+    padding: 0;
   }
   
   .devis-grid {
@@ -634,10 +634,10 @@
 }
 
 .devis-preview-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   border-radius: 3px;
 }
 
 .devis-preview-container::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
 }
