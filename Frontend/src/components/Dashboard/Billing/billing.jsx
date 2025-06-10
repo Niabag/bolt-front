@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API_ENDPOINTS, apiRequest } from '../../../config/api';
+import InvoicePreview from './invoicePreview';
 import './billing.scss';
 
 const Billing = ({ clients = [], onRefresh }) => {
@@ -11,6 +12,10 @@ const Billing = ({ clients = [], onRefresh }) => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [sortBy, setSortBy] = useState('date');
   const [showCreateInvoice, setShowCreateInvoice] = useState(false);
+  const [showInvoicePreview, setShowInvoicePreview] = useState(false);
+  const [previewInvoice, setPreviewInvoice] = useState(null);
+  const [previewDevis, setPreviewDevis] = useState([]);
+  const [previewClient, setPreviewClient] = useState({});
   const [newInvoice, setNewInvoice] = useState({
     clientId: '',
     devisIds: [],
@@ -234,6 +239,33 @@ const Billing = ({ clients = [], onRefresh }) => {
     }
   };
 
+  const handleViewInvoice = async (invoice) => {
+    try {
+      setLoading(true);
+      const devisDetails = await Promise.all(
+        invoice.devisIds.map(async (id) => {
+          try {
+            return await apiRequest(API_ENDPOINTS.DEVIS.BY_ID(id));
+          } catch (err) {
+            console.error('Erreur récupération devis:', err);
+            return null;
+          }
+        })
+      );
+      const validDevis = devisDetails.filter(Boolean);
+      const client = clients.find(c => c._id === invoice.clientId) || {};
+
+      setPreviewInvoice(invoice);
+      setPreviewDevis(validDevis);
+      setPreviewClient(client);
+      setShowInvoicePreview(true);
+    } catch (err) {
+      console.error('Erreur affichage facture:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleDownloadInvoicePDF = async (invoice) => {
     try {
       setLoading(true);
@@ -319,6 +351,12 @@ const Billing = ({ clients = [], onRefresh }) => {
     }
   };
 
+  const handleDeleteInvoice = (invoiceId) => {
+    if (window.confirm('Supprimer cette facture ?')) {
+      setInvoices(prev => prev.filter(inv => inv.id !== invoiceId));
+    }
+  };
+
   const getStatusColor = (status) => {
     switch (status) {
       case 'paid': return '#10b981';
@@ -347,6 +385,49 @@ const Billing = ({ clients = [], onRefresh }) => {
       case 'draft': return '📝';
       default: return '❓';
     }
+  };
+
+  const getNextStatusLabel = (status) => {
+    switch (status) {
+      case 'draft':
+        return 'Passer en Attente';
+      case 'pending':
+        return 'Marquer Payée';
+      case 'paid':
+        return 'Marquer En retard';
+      case 'overdue':
+        return 'Repasser en Brouillon';
+      default:
+        return 'Changer le statut';
+    }
+  };
+
+  const handleInvoiceStatusClick = (invoiceId, currentStatus) => {
+    let newStatus;
+    switch (currentStatus) {
+      case 'draft':
+        newStatus = 'pending';
+        break;
+      case 'pending':
+        newStatus = 'paid';
+        break;
+      case 'paid':
+        newStatus = 'overdue';
+        break;
+      case 'overdue':
+        newStatus = 'draft';
+        break;
+      default:
+        newStatus = 'pending';
+    }
+
+    setInvoices(prev =>
+      prev.map(inv =>
+        inv.id === invoiceId ? { ...inv, status: newStatus } : inv
+      )
+    );
+
+    alert(`Statut de la facture mis à jour : ${getStatusLabel(newStatus)}`);
   };
 
   const formatDate = (dateStr) => {
@@ -557,9 +638,11 @@ const Billing = ({ clients = [], onRefresh }) => {
               <div key={invoice.id} className="invoice-card">
                 <div className="invoice-header">
                   <div className="invoice-number">{invoice.invoiceNumber}</div>
-                  <div 
-                    className="invoice-status"
+                  <div
+                    className="invoice-status clickable"
                     style={{ backgroundColor: getStatusColor(invoice.status), color: 'white' }}
+                    title={getNextStatusLabel(invoice.status)}
+                    onClick={() => handleInvoiceStatusClick(invoice.id, invoice.status)}
                   >
                     {getStatusIcon(invoice.status)} {getStatusLabel(invoice.status)}
                   </div>
@@ -591,7 +674,11 @@ const Billing = ({ clients = [], onRefresh }) => {
                 </div>
 
                 <div className="invoice-actions">
-                  <button className="action-btn view-btn" title="Voir la facture">
+                  <button
+                    onClick={() => handleViewInvoice(invoice)}
+                    className="action-btn view-btn"
+                    title="Voir la facture"
+                  >
                     👁️
                   </button>
                   <button
@@ -603,6 +690,13 @@ const Billing = ({ clients = [], onRefresh }) => {
                   </button>
                   <button className="action-btn send-btn" title="Envoyer par email">
                     📧
+                  </button>
+                  <button
+                    onClick={() => handleDeleteInvoice(invoice.id)}
+                    className="action-btn delete-btn"
+                    title="Supprimer la facture"
+                  >
+                    🗑️
                   </button>
                 </div>
               </div>
@@ -728,6 +822,25 @@ const Billing = ({ clients = [], onRefresh }) => {
               >
                 {loading ? 'Création...' : '💰 Créer la facture'}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showInvoicePreview && (
+        <div className="modal-overlay" onClick={() => setShowInvoicePreview(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>📄 Aperçu de la facture</h3>
+              <button onClick={() => setShowInvoicePreview(false)} className="modal-close">✕</button>
+            </div>
+            <div className="modal-body">
+              <InvoicePreview
+                invoice={previewInvoice}
+                devisDetails={previewDevis}
+                client={previewClient}
+                onClose={() => setShowInvoicePreview(false)}
+              />
             </div>
           </div>
         </div>
