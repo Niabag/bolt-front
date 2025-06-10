@@ -589,7 +589,7 @@ const Devis = ({ clients = [], initialDevisFromClient = null, onBack, selectedCl
 
           <div className="devis-actions">
             {onBack && (
-              <button className="btn-secondary" onClick={onBack}>
+              <button className="btn-secondary\" onClick={onBack}>
                 ← Retour aux prospects
               </button>
             )}
