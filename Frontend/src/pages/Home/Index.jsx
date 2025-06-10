@@ -6,7 +6,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isVisible, setIsVisible] = useState({
-    hero: false,
+    hero: true, // Le hero est toujours visible au chargement
     features: false,
     steps: false,
     testimonials: false,
@@ -39,8 +39,9 @@ const Home = () => {
 
     const observers = {};
     
+    // Ne pas observer le hero, il est toujours visible
     Object.entries(sectionRefs).forEach(([key, ref]) => {
-      if (ref.current) {
+      if (key !== 'hero' && ref.current) {
         observers[key] = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -154,7 +155,7 @@ const Home = () => {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className={`hero-section ${isVisible.hero ? 'animate' : ''}`} ref={sectionRefs.hero}>
+      <section className="hero-section" ref={sectionRefs.hero}>
         <div className="hero-background">
           <div className="hero-shape shape-1"></div>
           <div className="hero-shape shape-2"></div>
@@ -227,12 +228,12 @@ const Home = () => {
                 </div>
                 <div className="preview-chart">
                   <div className="chart-bars">
-                    <div className="bar" style={{height: '60%'}}></div>
-                    <div className="bar" style={{height: '80%'}}></div>
-                    <div className="bar" style={{height: '45%'}}></div>
-                    <div className="bar" style={{height: '90%'}}></div>
-                    <div className="bar" style={{height: '70%'}}></div>
-                    <div className="bar" style={{height: '85%'}}></div>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
                   </div>
                 </div>
                 <div className="preview-clients">
@@ -293,7 +294,7 @@ const Home = () => {
           </div>
           <div className="features-grid">
             {features.map((feature, index) => (
-              <div key={index} className="feature-card" style={{animationDelay: `${index * 0.1}s`}}>
+              <div key={index} className="feature-card">
                 <div className="feature-icon">{feature.icon}</div>
                 <h3>{feature.title}</h3>
                 <p>{feature.description}</p>
@@ -357,7 +358,7 @@ const Home = () => {
           </div>
           <div className="steps-container">
             {steps.map((step, index) => (
-              <div key={index} className="step" style={{animationDelay: `${index * 0.15}s`}}>
+              <div key={index} className="step">
                 <div className="step-content">
                   <div className="step-number">{step.number}</div>
                   <div className="step-icon">{step.icon}</div>
@@ -381,7 +382,7 @@ const Home = () => {
           </div>
           <div className="testimonials-grid">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card" style={{animationDelay: `${index * 0.15}s`}}>
+              <div key={index} className="testimonial-card">
                 <div className="testimonial-rating">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <span key={i} className="star">★</span>
