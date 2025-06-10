@@ -18,7 +18,6 @@ import Pricing from "./pages/Pricing/Index";
 import Demo from "./pages/Demo/Index";
 import Integrations from "./pages/Integrations/Index";
 import Help from "./pages/Help/Index";
-import Tutorials from "./pages/Tutorials/Index";
 import Blog from "./pages/Blog/Index";
 import ApiDocs from "./pages/ApiDocs/Index";
 import About from "./pages/About/Index";
@@ -50,7 +49,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/demo" element={<Demo />} />
             <Route path="/integrations" element={<Integrations />} />
             <Route path="/help" element={<Help />} />
-            <Route path="/tutorials" element={<Tutorials />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/api-docs" element={<ApiDocs />} />
             <Route path="/about" element={<About />} />
