@@ -64,7 +64,8 @@ exports.startFreeTrial = async (req, res) => {
 // Create Stripe checkout session
 exports.createCheckoutSession = async (req, res) => {
   try {
-    const { priceId } = req.body;
+    // Utiliser l'ID de prix fourni ou celui par défaut dans les variables d'environnement
+    const { priceId = process.env.STRIPE_PRICE_ID } = req.body;
     
     if (!priceId) {
       return res.status(400).json({ message: 'Price ID is required' });
