@@ -33,7 +33,7 @@ const ProtectedRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="access-checking">
-        <div className="loading-spinner"></div>
+        <div className="loading-spinner">⏳</div>
         <p>Vérification de votre accès...</p>
       </div>
     );
@@ -43,11 +43,12 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/login" />;
   }
 
-  if (!hasAccess) {
-    return <SubscriptionRequired />;
+  // Correction ici: Toujours autoriser l'accès pendant la période d'essai
+  if (hasAccess === true) {
+    return children;
   }
 
-  return children;
+  return <SubscriptionRequired />;
 };
 
 export default ProtectedRoute;

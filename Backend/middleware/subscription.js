@@ -9,7 +9,7 @@ exports.checkSubscription = async (req, res, next) => {
       return res.status(404).json({ message: 'User not found' });
     }
     
-    // Check if user has valid access
+    // Check if user has valid access (subscription or trial)
     if (!user.hasValidAccess()) {
       return res.status(403).json({ 
         message: 'Subscription required',
