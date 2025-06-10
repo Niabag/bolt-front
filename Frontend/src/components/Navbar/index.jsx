@@ -6,15 +6,19 @@ import "./navbar.scss";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    if (token) {
+    // Vérifier le token à chaque changement de route
+    const currentToken = localStorage.getItem("token");
+    setToken(currentToken);
+    
+    if (currentToken) {
       fetchUser();
     }
-  }, [token]);
+  }, [location.pathname]);
 
   const fetchUser = async () => {
     try {
@@ -30,6 +34,7 @@ const Navbar = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
+    setToken(null);
     navigate("/");
   };
 
@@ -73,8 +78,14 @@ const Navbar = () => {
               <Link to="/" className="nav-link" onClick={closeMenu}>
                 🏠 Accueil
               </Link>
+              <Link to="/features" className="nav-link" onClick={closeMenu}>
+                ✨ Fonctionnalités
+              </Link>
+              <Link to="/pricing" className="nav-link" onClick={closeMenu}>
+                💰 Tarifs
+              </Link>
               <Link to="/register-user" className="nav-link" onClick={closeMenu}>
-                ✨ Créer un compte
+                👤 Créer un compte
               </Link>
               <Link to="/login" className="nav-link login-btn" onClick={closeMenu}>
                 🔐 Se connecter
@@ -84,6 +95,12 @@ const Navbar = () => {
             <div className="user-menu">
               <Link to="/" className="nav-link" onClick={closeMenu}>
                 🏠 Accueil
+              </Link>
+              <Link to="/features" className="nav-link" onClick={closeMenu}>
+                ✨ Fonctionnalités
+              </Link>
+              <Link to="/pricing" className="nav-link" onClick={closeMenu}>
+                💰 Tarifs
               </Link>
               <Link to="/dashboard" className="nav-link dashboard-btn" onClick={closeMenu}>
                 📊 Dashboard
