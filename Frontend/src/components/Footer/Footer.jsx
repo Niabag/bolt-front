@@ -46,7 +46,6 @@ const Footer = () => {
             <div className="footer-column">
               <h4>Ressources</h4>
               <ul>
-                <li><Link to="/tutorials">Tutoriels</Link></li>
                 <li><Link to="/api-docs">Documentation API</Link></li>
               </ul>
             </div>
