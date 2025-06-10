@@ -47,7 +47,7 @@ const SubscriptionBanner = () => {
     return null;
   }
 
-  // Show trial banner
+  // Show trial banner but don't block access
   if (subscriptionData.status === SUBSCRIPTION_STATUS.TRIAL) {
     const daysRemaining = getTrialDaysRemaining(subscriptionData.trialEndDate);
     

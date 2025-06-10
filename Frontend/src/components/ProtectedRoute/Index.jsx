@@ -43,11 +43,12 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/login" />;
   }
 
-  // Correction ici: Toujours autoriser l'accès pendant la période d'essai
-  if (hasAccess === true) {
+  // Si l'utilisateur a accès (abonnement actif ou période d'essai), afficher le contenu
+  if (hasAccess) {
     return children;
   }
 
+  // Sinon, rediriger vers la page d'abonnement
   return <SubscriptionRequired />;
 };
 
