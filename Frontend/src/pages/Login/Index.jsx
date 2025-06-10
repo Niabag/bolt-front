@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { API_ENDPOINTS, apiRequest } from "../../config/api";
 import "./login.scss";
 
@@ -12,6 +12,10 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Check for success message from registration
+  const successMessage = location.state?.message || "";
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -105,6 +109,13 @@ const Login = () => {
               <h1>Connexion</h1>
               <p>Accédez à votre espace CRM Pro</p>
             </div>
+
+            {successMessage && (
+              <div className="success-message">
+                <span className="success-icon">✅</span>
+                {successMessage}
+              </div>
+            )}
 
             {error && (
               <div className="error-message">

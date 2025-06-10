@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { API_ENDPOINTS, apiRequest } from "../../config/api";
+import { startFreeTrial } from "../../services/subscription";
 import "./registerUser.scss";
 
 const RegisterUser = () => {
@@ -84,7 +85,8 @@ const RegisterUser = () => {
     setLoading(true);
 
     try {
-      await apiRequest(API_ENDPOINTS.AUTH.REGISTER, {
+      // 1. Register the user
+      const userData = await apiRequest(API_ENDPOINTS.AUTH.REGISTER, {
         method: "POST",
         body: JSON.stringify({
           name: formData.name.trim(),
@@ -93,18 +95,20 @@ const RegisterUser = () => {
         }),
       });
 
-      console.log("✅ Inscription réussie");
+      // 2. Store the token
+      localStorage.setItem("token", userData.token);
+      localStorage.setItem("user", JSON.stringify(userData.user));
       
-      // Redirection vers la page de connexion avec message de succès
-      navigate("/login", { 
-        state: { 
-          message: "Compte créé avec succès ! Vous pouvez maintenant vous connecter." 
-        }
-      });
+      // 3. Start the free trial
+      await startFreeTrial();
+
+      console.log("✅ Inscription et période d'essai activées");
+      
+      // 4. Redirect to dashboard
+      navigate("/dashboard");
     } catch (err) {
       console.error("❌ Erreur d'inscription:", err);
       setError(err.message || "Erreur lors de la création du compte");
-    } finally {
       setLoading(false);
     }
   };
@@ -150,7 +154,7 @@ const RegisterUser = () => {
           <div className="auth-form-container">
             <div className="auth-header">
               <h1>Créer un compte</h1>
-              <p>Commencez votre essai gratuit dès maintenant</p>
+              <p>Commencez votre essai gratuit de 14 jours</p>
             </div>
 
             {error && (
@@ -309,7 +313,7 @@ const RegisterUser = () => {
                 ) : (
                   <>
                     <span className="btn-icon">🚀</span>
-                    Créer mon compte gratuitement
+                    Commencer mon essai gratuit
                   </>
                 )}
               </button>
@@ -334,8 +338,8 @@ const RegisterUser = () => {
                 <span>Aucun spam</span>
               </div>
               <div className="security-item">
-                <span className="security-icon">✨</span>
-                <span>Gratuit à vie</span>
+                <span className="security-icon">🎁</span>
+                <span>14 jours d'essai gratuit</span>
               </div>
             </div>
           </div>

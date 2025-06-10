@@ -36,13 +36,23 @@ export const API_ENDPOINTS = {
     DELETE: (devisId) => `${API_CONFIG.BASE_URL}/devis/${devisId}`,
   },
 
-  // ✅ NOUVEAU: Cartes de visite
+  // Cartes de visite
   BUSINESS_CARDS: {
     BASE: `${API_CONFIG.BASE_URL}/business-cards`,
     CONFIG: `${API_CONFIG.BASE_URL}/business-cards/config`,
     TRACK_VIEW: (userId) => `${API_CONFIG.BASE_URL}/business-cards/track-view/${userId}`,
     STATS: (userId) => `${API_CONFIG.BASE_URL}/business-cards/stats/${userId}`,
   },
+  
+  // Abonnements
+  SUBSCRIPTION: {
+    STATUS: `${API_CONFIG.BASE_URL}/subscription/status`,
+    START_TRIAL: `${API_CONFIG.BASE_URL}/subscription/trial`,
+    CREATE_CHECKOUT: `${API_CONFIG.BASE_URL}/subscription/create-checkout`,
+    CREATE_PORTAL: `${API_CONFIG.BASE_URL}/subscription/create-portal`,
+    CANCEL: `${API_CONFIG.BASE_URL}/subscription/cancel`,
+    WEBHOOK: `${API_CONFIG.BASE_URL}/subscription/webhook`,
+  }
 };
 
 // URLs frontend
@@ -87,4 +97,3 @@ export const apiRequest = async (url, options = {}) => {
     throw error;
   }
 };
-

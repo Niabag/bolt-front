@@ -1,6 +1,6 @@
 .auth-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,11 +137,9 @@
   font-size: 1rem;
 }
 
-/* Messages d'erreur */
-.error-message {
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-  border: 2px solid #fca5a5;
-  color: #dc2626;
+/* Messages d'erreur et de succès */
+.error-message,
+.success-message {
   padding: 1rem;
   border-radius: 12px;
   margin-bottom: 1.5rem;
@@ -151,7 +149,20 @@
   font-weight: 500;
 }
 
-.error-icon {
+.error-message {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 2px solid #fca5a5;
+  color: #b91c1c;
+}
+
+.success-message {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  border: 2px solid #86efac;
+  color: #166534;
+}
+
+.error-icon,
+.success-icon {
   font-size: 1.2rem;
 }
 
@@ -173,30 +184,30 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  color: #374151;
+  color: #0f172a;
   font-size: 0.9rem;
 }
 
 .label-icon {
   font-size: 1rem;
-  color: #667eea;
+  color: #3b82f6;
 }
 
 .form-input {
   padding: 1rem 1.25rem;
-  border: 2px solid #e5e7eb;
+  border: 2px solid #e2e8f0;
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  background: #f9fafb;
+  background: #f8fafc;
   font-weight: 500;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #3b82f6;
   background: white;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
   transform: translateY(-1px);
 }
 
@@ -213,12 +224,12 @@
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
-  color: #6b7280;
+  color: #64748b;
   transition: color 0.3s ease;
 }
 
 .password-toggle:hover {
-  color: #667eea;
+  color: #3b82f6;
 }
 
 /* Options du formulaire */
@@ -235,7 +246,7 @@
   gap: 0.5rem;
   cursor: pointer;
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #64748b;
 }
 
 .checkbox-label input {
@@ -245,15 +256,15 @@
 .checkbox-custom {
   width: 18px;
   height: 18px;
-  border: 2px solid #d1d5db;
+  border: 2px solid #cbd5e1;
   border-radius: 4px;
   position: relative;
   transition: all 0.3s ease;
 }
 
 .checkbox-label input:checked + .checkbox-custom {
-  background: #667eea;
-  border-color: #667eea;
+  background: #3b82f6;
+  border-color: #3b82f6;
 }
 
 .checkbox-label input:checked + .checkbox-custom::after {
@@ -268,7 +279,7 @@
 }
 
 .forgot-link {
-  color: #667eea;
+  color: #3b82f6;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -276,13 +287,13 @@
 }
 
 .forgot-link:hover {
-  color: #5a67d8;
+  color: #1d4ed8;
   text-decoration: underline;
 }
 
 /* Bouton de soumission */
 .auth-submit-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   color: white;
   border: none;
   padding: 1.25rem 2rem;
@@ -296,20 +307,20 @@
   justify-content: center;
   gap: 0.5rem;
   margin-top: 1rem;
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
 }
 
 .auth-submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
 }
 
 .auth-submit-btn:disabled {
-  background: #9ca3af;
+  background: #94a3b8;
   cursor: not-allowed;
   transform: none;
-  box-shadow: 0 4px 15px rgba(156, 163, 175, 0.3);
+  box-shadow: 0 4px 15px rgba(148, 163, 184, 0.3);
 }
 
 .loading-spinner {
@@ -335,24 +346,24 @@
   text-align: center;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #e2e8f0;
 }
 
 .auth-footer p {
-  color: #6b7280;
+  color: #64748b;
   margin: 0;
   font-size: 0.9rem;
 }
 
 .auth-link {
-  color: #667eea;
+  color: #3b82f6;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .auth-link:hover {
-  color: #5a67d8;
+  color: #1d4ed8;
   text-decoration: underline;
 }
 
@@ -370,12 +381,12 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: #e5e7eb;
+  background: #e2e8f0;
 }
 
 .auth-divider span {
   background: white;
-  color: #9ca3af;
+  color: #94a3b8;
   padding: 0 1rem;
   font-size: 0.9rem;
   position: relative;
@@ -387,7 +398,7 @@
 }
 
 .demo-text {
-  color: #6b7280;
+  color: #64748b;
   font-size: 0.9rem;
   margin: 0 0 1rem 0;
 }
@@ -397,17 +408,17 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  color: #374151;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: #0f172a;
   text-decoration: none;
   border-radius: 10px;
   font-weight: 500;
   transition: all 0.3s ease;
-  border: 1px solid #d1d5db;
+  border: 1px solid #cbd5e1;
 }
 
 .demo-btn:hover {
-  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
   transform: translateY(-1px);
 }
 
