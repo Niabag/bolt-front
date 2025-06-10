@@ -6,19 +6,15 @@ import "./navbar.scss";
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Vérifier le token à chaque changement de route
-    const currentToken = localStorage.getItem("token");
-    setToken(currentToken);
-    
-    if (currentToken) {
+    if (token) {
       fetchUser();
     }
-  }, [location.pathname]);
+  }, [token]);
 
   const fetchUser = async () => {
     try {
@@ -34,7 +30,6 @@ const Navbar = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     setUser(null);
-    setToken(null);
     navigate("/");
   };
 
@@ -75,17 +70,23 @@ const Navbar = () => {
         <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
           {!token ? (
             <>
-              <Link to="/\" className="nav-link\" onClick={closeMenu}>
+              <Link to="/" className="nav-link" onClick={closeMenu}>
                 🏠 Accueil
               </Link>
               <Link to="/features" className="nav-link" onClick={closeMenu}>
-                ✨ Fonctionnalités
+                ⭐ Fonctionnalités
               </Link>
               <Link to="/pricing" className="nav-link" onClick={closeMenu}>
                 💰 Tarifs
               </Link>
-              <Link to="/register-user" className="nav-link" onClick={closeMenu}>
-                👤 Créer un compte
+              <Link to="/about" className="nav-link" onClick={closeMenu}>
+                ℹ️ À propos
+              </Link>
+              <Link to="/contact" className="nav-link" onClick={closeMenu}>
+                📞 Contact
+              </Link>
+              <Link to="/register-user" className="nav-link register-btn" onClick={closeMenu}>
+                ✨ Créer un compte
               </Link>
               <Link to="/login" className="nav-link login-btn" onClick={closeMenu}>
                 🔐 Se connecter
@@ -97,10 +98,16 @@ const Navbar = () => {
                 🏠 Accueil
               </Link>
               <Link to="/features" className="nav-link" onClick={closeMenu}>
-                ✨ Fonctionnalités
+                ⭐ Fonctionnalités
               </Link>
               <Link to="/pricing" className="nav-link" onClick={closeMenu}>
                 💰 Tarifs
+              </Link>
+              <Link to="/about" className="nav-link" onClick={closeMenu}>
+                ℹ️ À propos
+              </Link>
+              <Link to="/contact" className="nav-link" onClick={closeMenu}>
+                📞 Contact
               </Link>
               <Link to="/dashboard" className="nav-link dashboard-btn" onClick={closeMenu}>
                 📊 Dashboard
