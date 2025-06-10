@@ -201,7 +201,7 @@ const Gdpr = () => (
           Pour la France, l'autorité de contrôle est la Commission Nationale de l'Informatique et des Libertés (CNIL) :
         </p>
         <div className="authority-contact">
-           <p><strong>Site web</strong> : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">www.cnil.fr</a></p>
+           <p><strong>Site web</strong> : <a href="https://www.cnil.fr" target=\"_blank" rel="noopener noreferrer">www.cnil.fr</a></p>
           <p><strong>Adresse</strong> : 3 Place de Fontenoy, TSA 80715, 75334 PARIS CEDEX 07, France</p>
           <p><strong>Téléphone</strong> : +33 (0)1 53 73 22 22</p>
         </div>
